@@ -106,9 +106,15 @@ const bondingImages = [
     if (isPlaying) {
       audioPlayer.pause();
       playPauseBtn.textContent = "Play Music";
+      isPlaying = false;
     } else {
-      audioPlayer.play();
-      playPauseBtn.textContent = "Pause Music";
+      audioPlayer.play()
+        .then(() => {
+          playPauseBtn.textContent = "Pause Music";
+          isPlaying = true;
+        })
+        .catch(error => {
+          console.error("Playback failed:", error);
+        });
     }
-    isPlaying = !isPlaying;
   });
