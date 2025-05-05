@@ -289,3 +289,11 @@ footer {
         font-size: 2rem;
     }
 }
+
+.developer-photo {
+    width: 50px;  /* Adjust the size of the image */
+    height: 50px;  /* Adjust the size of the image */
+    border-radius: 50%;  /* Circular image */
+    margin-top: 10px;
+  }
+
