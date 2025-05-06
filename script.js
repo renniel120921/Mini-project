@@ -72,7 +72,9 @@ window.addEventListener("DOMContentLoaded", () => {
 const bondingImages = [
     "bond1.jpg", "bond2.jpg", "bond3.jpg", "bond4.jpg",
     "bond5.jpg", "bond6.jpg", "bond7.jpg", "bond8.jpg",
-    "bond9.jpg", "bond10.jpg", "bond11.jpg", "bond12.jpg"
+    "bond9.jpg", "bond10.jpg", "bond11.jpg", "bond12.jpg",
+    "bond13.jpg","bond14.jpg","bond15.jpg","bond16.jpg",
+    "bond17.jpg","bond18.jpg","bond19.jpg"
   ];
 
   let currentSlide = 0;
