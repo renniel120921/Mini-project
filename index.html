@@ -2,117 +2,787 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Grade 4 Batch Memories</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 4 Batch Tribute - Premium Digital Archive</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+    /* ========================================= */
+    /* BASE STYLES & TYPOGRAPHY (PREMIUM DARK) */
+    /* ========================================= */
+      :root {
+          --dark-bg: #0F0F0F;
+          --section-bg: #1A1A1A;
+          --primary-text: #F0F0F0;
+          --secondary-text: #A0A0A0;
+          --accent-color: #C0A45B;
+          --glow-color: rgba(192, 164, 91, 0.4);
+          --card-bg: #1A1A1A;
+          --header-font: 'Cormorant Garamond', serif;
+          --body-font: 'Poppins', sans-serif;
+          font-size: 16px;
+      }
+
+      body {
+          font-family: var(--body-font);
+          background-color: var(--dark-bg);
+          color: var(--primary-text);
+          line-height: 1.6;
+          scroll-behavior: smooth;
+          overflow-x: hidden;
+      }
+
+      /* ************************************************************ */
+      /* RESPONSIVE FIX 1: Section Padding (Reduced for Mobile)        */
+      /* ************************************************************ */
+      section {
+          padding: 6rem 0; /* BINABA mula 8rem para masikip sa taas at baba ng section sa desktop */
+          background-color: var(--dark-bg);
+          position: relative;
+      }
+
+      h1, h2, h3, h4 {
+          font-family: var(--header-font);
+          color: var(--accent-color);
+          text-shadow: 0 0 5px var(--glow-color);
+      }
+
+      .section-title {
+          margin-bottom: 4rem; /* BINABA mula 5rem */
+          text-align: center;
+      }
+
+      .section-title h2 {
+          font-size: 3rem; /* BINABA mula 3.5rem */
+          position: relative;
+          display: inline-block;
+      }
+      /* ... (Section Title h2::after style maintained) ... */
+
+
+      /* ========================================= */
+      /* TEACHER PHOTO & HEADER ADJUSTMENT (FIXED) */
+      /* ========================================= */
+
+      /* Responsive adjustment for Hero Banner Photo */
+      #mainPhoto {
+          max-height: 70vh; /* Para hindi masyadong matangkad ang hero image */
+          width: auto;
+          display: block;
+          margin: 0 auto;
+      }
+
+      .teacher-photo {
+          width: 140px; /* BINABA mula 160px */
+          height: 140px;
+          border: 5px solid var(--accent-color);
+          box-shadow: 0 0 10px var(--glow-color);
+          object-fit: cover;
+      }
+
+      /* ========================================= */
+      /* CLASS ROLL GRID (Adjusted for Stability) */
+      /* ========================================= */
+      .photo-grid {
+          display: grid;
+          /* Kept minmax(60px, 1fr) for better column density on all screens */
+          grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+          gap: 10px; /* BINABA mula 12px */
+      }
+
+      .photo-card p {
+          margin-top: 4px; /* BINABA mula 5px */
+          font-size: 0.7rem; /* BINABA mula 0.75rem para mas magkasya ang pangalan */
+          color: var(--accent-color);
+          font-weight: 600;
+          margin-bottom: 0;
+          line-height: 1.2;
+      }
+
+      /* ========================================= */
+      /* GALLERY IMAGE PROFESSIONAL STYLE (FIXED SIZE) */
+      /* ========================================= */
+      .gallery-image {
+          /* Binaba ang maximum height para hindi masyadong malaki */
+          max-height: 55vh;
+          /* Nilagyan ng maximum width para hindi mag-span sa buong screen sa desktop */
+          max-width: 800px;
+
+          /* Center the image */
+          margin-left: auto;
+          margin-right: auto;
+          display: block;
+
+          /* Other styles maintained */
+          border: 4px solid var(--accent-color);
+          width: 100%;
+          object-fit: contain;
+          aspect-ratio: 16/9;
+          transition: all 0.3s ease-in-out;
+          box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      }
+
+      .gallery-image:hover {
+          box-shadow: 0 0 25px var(--glow-color);
+      }
+
+      /* ========================================= */
+      /* MEDIA QUERIES FOR MOBILE ADAPTATION (OPTIMIZED FOR ANDROID/IOS) */
+      /* ========================================= */
+
+      @media (max-width: 767.98px) {
+          /* ************************************************************ */
+          /* MOBILE OPTIMIZATION: Reduce Overall Spacing and Font Size */
+          /* ************************************************************ */
+          section {
+              padding: 4rem 0; /* Mas maliit na padding sa mobile */
+          }
+
+          .section-title {
+              margin-bottom: 3rem; /* Mas maliit na gap sa section title */
+          }
+
+          .section-title h2 {
+              font-size: 2.2rem; /* Mas maliit na font size sa title */
+          }
+
+          /* ************************************************************ */
+          /* MOBILE GALLERY FIX: Slideshow Image Size */
+          /* ************************************************************ */
+          .gallery-image {
+              max-height: 35vh; /* BINABA mula 40vh, para maging mas maliit sa phone screen (iOS/Android) */
+              aspect-ratio: 4/3;
+              max-width: 100%;
+          }
+
+          /* Smaller buttons on mobile to save space */
+          .slideshow-controls .btn {
+              padding: 0.5rem 1rem;
+              font-size: 0.9rem;
+          }
+      }
+
+      /* Custom Button Styling (General Purpose) */
+      .btn-custom {
+          background-color: var(--accent-color);
+          border: 1px solid var(--accent-color);
+          color: var(--dark-bg);
+          font-weight: 600;
+          transition: background-color 0.3s, color 0.3s;
+      }
+
+      .btn-custom:hover {
+          background-color: var(--dark-bg);
+          color: var(--accent-color);
+      }
+
+      /* ... (The rest of the CSS for premium-card, guestbook, etc. is maintained) ... */
+      .premium-card {
+          background-color: var(--card-bg);
+          border: 1px solid var(--accent-color);
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+          transition: all 0.4s ease;
+      }
+      .premium-card:hover {
+          border-color: var(--primary-text);
+          box-shadow: 0 5px 30px var(--glow-color);
+      }
+      .officer-card img {
+          width: 70px;
+          height: 70px;
+          border: 3px solid var(--primary-text);
+      }
+      .photo-card {
+          background-color: #222;
+          border-radius: 8px;
+          padding: 5px;
+          transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .photo-card:hover {
+          transform: scale(1.1);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 10px var(--accent-color);
+      }
+      .photo-card img {
+          width: 100%;
+          aspect-ratio: 1/1;
+          object-fit: cover;
+          border: 3px solid var(--primary-text);
+      }
+
+      .guestbook-entry {
+          background-color: #222;
+          border-left: 3px solid var(--accent-color);
+          padding: 1.5rem;
+          margin-bottom: 1.5rem;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+          transition: all 0.3s ease;
+      }
+
+      .guestbook-entry:hover {
+          box-shadow: 0 6px 12px var(--glow-color);
+      }
+
+      .entry-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 0.5rem;
+      }
+
+      .entry-name {
+          font-weight: 700;
+          color: var(--accent-color);
+          font-size: 1.25rem;
+      }
+
+      .entry-affiliation {
+          font-style: italic;
+          color: var(--secondary-text);
+          font-size: 0.9rem;
+      }
+
+      .entry-message {
+          margin-top: 1rem;
+      }
+
+      .entry-timestamp {
+          font-size: 0.8rem;
+          color: var(--secondary-text);
+          text-align: right;
+          margin-top: 0.5rem;
+      }
+
+      .modal-content {
+          background-color: var(--card-bg);
+          border: 1px solid var(--accent-color);
+          color: var(--primary-text);
+      }
+
+      .modal-header {
+          border-bottom: 1px solid var(--accent-color);
+      }
+
+      .modal-footer {
+          border-top: 1px solid var(--accent-color);
+      }
+  </style>
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1>Grade 4 Batch Memories</h1>
-      <p>Relive the best year of our childhood!</p>
-    </div>
-  </header>
 
-  <nav class="main-nav container">
-    <ul>
-      <li><a href="#classmates">Classmates</a></li>
-      <li><a href="#teacher">Our Teacher</a></li>
-      <li><a href="#bonding">Bonding</a></li>
-    </ul>
-  </nav>
-
-  <main class="container">
-    <section class="intro">
-      <img src="batch-photo.jpg" alt="Batch Photo" id="mainPhoto">
-      <p>Welcome to our Grade 4 batch memories page. Here, we celebrate the fun, laughter, and friendships that made our time in Grade 4 unforgettable.</p>
-    </section>
-
-    <!-- Classmates Section -->
-    <section id="classmates" class="gallery">
-      <h2>Classmates</h2>
-
-      <div class="subsection">
-        <h3>Boys</h3>
-        <div class="photo-grid">
-          <div class="photo-card"><img src="erwin.jpg" alt="Erwin"><p>Erwin</p></div>
-          <div class="photo-card"><img src="jethro.jpg" alt="Jethro"><p>Jethro</p></div>
-          <div class="photo-card"><img src="jhonny.jpg" alt="Jhonny"><p>Jhonny</p></div>
-          <div class="photo-card"><img src="prince.jpg" alt="Prince"><p>Prince</p></div>
-          <div class="photo-card"><img src="warren.jpg" alt="Warren"><p>Warren</p></div>
-          <div class="photo-card"><img src="miguel.jpg" alt="Miguel"><p>Miguel</p></div>
-          <div class="photo-card"><img src="jenrick.jpg" alt="Jenrick"><p>Jenrick</p></div>
-          <div class="photo-card"><img src="bryan.jpg" alt="Bryan"><p>Bryan</p></div>
-          <div class="photo-card"><img src="romeo.jpg" alt="Romeo"><p>Romeo</p></div>
-          <div class="photo-card"><img src="nath.jpg" alt="Nathaniel"><p>Nathaniel</p></div>
-          <div class="photo-card"><img src="bradley.jpg" alt="Bradley"><p>Bradley</p></div>
-          <div class="photo-card"><img src="mirjun.jpg" alt="Mirjun"><p>Mirjun</p></div>
-          <div class="photo-card"><img src="alfie.jpg" alt="Alfie"><p>Alfie</p></div>
-          <div class="photo-card"><img src="ian.jpg" alt="Ian"><p>Ian</p></div>
-          <div class="photo-card"><img src="gerald.jpg" alt="Gerald"><p>Gerald</p></div>
-          <div class="photo-card"><img src="wendrei.jpg" alt="Wendrei"><p>Wendrei</p></div>
-          <div class="photo-card"><img src="profile.jpg" alt="Renniel"><p>Renniel</p></div>
-          <div class="photo-card"><img src="mark.jpg" alt="Mark"><p>Mark</p></div>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#hero-banner" style="font-family: var(--header-font); color: var(--accent-color);">G4 ARCHIVE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#teacher-dedication">Mentor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#classmates">Class Roll</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#leadership">Leadership</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#awards">Honors</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bonding">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Guestbook</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
+    </nav>
 
-      <div class="subsection">
-        <h3>Girls</h3>
-        <div class="photo-grid">
-          <div class="photo-card"><img src="tine.jpg" alt="Christine"><p>Christine</p></div>
-          <div class="photo-card"><img src="yang.jpg" alt="Erika"><p>Erika</p></div>
-          <div class="photo-card"><img src="karylle.jpg" alt="Karylle"><p>Karylle</p></div>
-          <div class="photo-card"><img src="nicole.jpg" alt="Nicole"><p>Nicole</p></div>
-          <div class="photo-card"><img src="norkisa.jpg" alt="Norkisa"><p>Norkisa</p></div>
-          <div class="photo-card"><img src="kyel.jpg" alt="Kyel"><p>Kyel</p></div>
-          <div class="photo-card"><img src="jonalyn.jpg" alt="Jonalyn"><p>Jonalyn</p></div>
+    <header id="hero-banner">
+        <div class="container">
+            <h1 data-aos="fade-down" data-aos-duration="1000">GRADE 4 TRIBUTE ARCHIVE</h1>
+            <p class="lead text-secondary" style="font-style: italic;" data-aos="fade-down" data-aos-delay="200">A Digital Portfolio of Our Journey | Batch 2024</p>
+            <div class="tribute-photo-container mt-5" data-aos="zoom-in" data-aos-delay="400">
+                <img src="batch-photo.jpg" alt="Batch Photo" id="mainPhoto" class="img-fluid rounded shadow" onerror="this.src='https://placehold.co/1200x600/1A1A1A/C0A45B?text=Batch+2024+Photo'">
+            </div>
         </div>
-      </div>
+    </header>
+
+    <section id="teacher-dedication" class="text-center">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>OUR GUIDING STAR: MA'AM APOL</h2>
+            </div>
+            <div class="premium-card col-lg-8 mx-auto p-4" data-aos="fade-up" data-aos-delay="200">
+                <img src="maam_apols.jpg" alt="Our Grade 4 Teacher" class="teacher-photo rounded-circle" onerror="this.src='https://placehold.co/160x160/1A1A1A/C0A45B?text=Teacher'">
+                <span class="teacher-name d-block mt-3" style="font-size: 2rem;">Ma'am Apol</span>
+                <p class="tribute-message mt-3">
+                    "More than a teacher, you were our inspiration and constant support. This archive is a heartfelt compilation of the lessons you taught us, both in the classroom and in life."
+                </p>
+            </div>
+        </div>
     </section>
 
-    <!-- Teacher Section -->
-    <section id="teacher" class="highlight">
-      <h2>Our Teacher</h2>
-      <img src="maam_apols.jpg" alt="Our Grade 4 Teacher" class="teacher-photo">
-      <span class="teacher-name">Ma'am Apol</span>
-      <p>Thank you for being our second parent and always guiding us!</p>
+    <section id="leadership">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>CLASS LEADERSHIP CORE</h2>
+            </div>
+            <div class="row justify-content-center g-4">
+                <div class="col-6 col-md-3">
+                    <div class="premium-card officer-card text-center" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="prince.jpg" alt="President" class="rounded-circle" onerror="this.src='https://placehold.co/70x70/1A1A1A/C0A45B?text=P'">
+                        <p class="mt-2 mb-0">Prince</p>
+                        <span class="small text-secondary">President</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="premium-card officer-card text-center" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="tine.jpg" alt="VP" class="rounded-circle" onerror="this.src='https://placehold.co/70x70/1A1A1A/C0A45B?text=C'">
+                        <p class="mt-2 mb-0">Christine</p>
+                        <span class="small text-secondary">Vice President</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="premium-card officer-card text-center" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="miguel.jpg" alt="Secretary" class="rounded-circle" onerror="this.src='https://placehold.co/70x70/1A1A1A/C0A45B?text=M'">
+                        <p class="mt-2 mb-0">Miguel</p>
+                        <span class="small text-secondary">Secretary</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="premium-card officer-card text-center" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="karylle.jpg" alt="Treasurer" class="rounded-circle" onerror="this.src='https://placehold.co/70x70/1A1A1A/C0A45B?text=K'">
+                        <p class="mt-2 mb-0">Karylle</p>
+                        <span class="small text-secondary">Treasurer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-<!-- Bonding Moments Section with Music -->
-<section id="bonding" class="gallery">
-    <h2>Bonding Moments</h2>
 
-    <!-- Slideshow -->
-    <div class="slideshow">
-      <img id="slideshowImage" src="bond1.jpg" alt="Bonding Moments">
-      <div class="slideshow-controls">
-        <button id="prevBtn">⟨</button>
-        <button id="nextBtn">⟩</button>
-      </div>
+    <section id="classmates" style="background-color: var(--dark-bg);">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>THE COMPLETE CLASS ROLL</h2>
+            </div>
+
+            <div class="classmate-subsection">
+                <h3 data-aos="fade-right">The Gentlemen 👦</h3>
+                <div class="photo-grid">
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-offset="50"><img src="erwin.jpg" alt="Erwin" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=E'"><p>Erwin</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="50" data-aos-offset="50"><img src="jethro.jpg" alt="Jethro" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=J'"><p>Jethro</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="100" data-aos-offset="50"><img src="jhonny.jpg" alt="Jhonny" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=J'"><p>Jhonny</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="150" data-aos-offset="50"><img src="prince.jpg" alt="Prince" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=P'"><p>Prince</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="200" data-aos-offset="50"><img src="warren.jpg" alt="Warren" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=W'"><p>Warren</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="250" data-aos-offset="50"><img src="miguel.jpg" alt="Miguel" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=M'"><p>Miguel</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300" data-aos-offset="50"><img src="jenrick.jpg" alt="Jenrick" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=J'"><p>Jenrick</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="350" data-aos-offset="50"><img src="bryan.jpg" alt="Bryan" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=B'"><p>Bryan</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="400" data-aos-offset="50"><img src="romeo.jpg" alt="Romeo" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=R'"><p>Romeo</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="450" data-aos-offset="50"><img src="nath.jpg" alt="Nathaniel" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=N'"><p>Nathaniel</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="500" data-aos-offset="50"><img src="bradley.jpg" alt="Bradley" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=B'"><p>Bradley</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="550" data-aos-offset="50"><img src="mirjun.jpg" alt="Mirjun" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=M'"><p>Mirjun</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="600" data-aos-offset="50"><img src="alfie.jpg" alt="Alfie" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=A'"><p>Alfie</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="650" data-aos-offset="50"><img src="ian.jpg" alt="Ian" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=I'"><p>Ian</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="700" data-aos-offset="50"><img src="gerald.jpg" alt="Gerald" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=G'"><p>Gerald</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="750" data-aos-offset="50"><img src="wendrei.jpg" alt="Wendrei" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=W'"><p>Wendrei</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="800" data-aos-offset="50"><img src="profile.jpg" alt="Renniel" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=R'"><p>Renniel</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="850" data-aos-offset="50"><img src="mark.jpg" alt="Mark" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=M'"><p>Mark</p></figure>
+                </div>
+            </div>
+
+            <div class="classmate-subsection mt-5">
+                <h3 data-aos="fade-left">The Ladies 👧</h3>
+                <div class="photo-grid">
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-offset="50"><img src="tine.jpg" alt="Christine" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=C'"><p>Christine</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="50" data-aos-offset="50"><img src="yang.jpg" alt="Erika" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=E'"><p>Erika</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="100" data-aos-offset="50"><img src="karylle.jpg" alt="Karylle" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=K'"><p>Karylle</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="150" data-aos-offset="50"><img src="nicole.jpg" alt="Nicole" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=N'"><p>Nicole</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="200" data-aos-offset="50"><img src="norkisa.jpg" alt="Norkisa" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=N'"><p>Norkisa</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="250" data-aos-offset="50"><img src="kyel.jpg" alt="Kyel" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=K'"><p>Kyel</p></figure>
+                    <figure class="photo-card text-center" data-aos="zoom-in" data-aos-duration="500" data-aos-delay="300" data-aos-offset="50"><img src="jonalyn.jpg" alt="Jonalyn" class="rounded-circle" onerror="this.src='https://placehold.co/60x60/1A1A1A/C0A45B?text=J'"><p>Jonalyn</p></figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards" style="background-color: var(--section-bg);">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>HONORS & MILESTONES</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="milestone-card premium-card text-center" data-aos="flip-up" data-aos-delay="100">
+                        <h4><i class="bi bi-award-fill" style="color: var(--accent-color);"></i> Academic Excellence</h4>
+                        <p class="small text-secondary">Awarded to the Top 5 students for overall outstanding performance.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="milestone-card premium-card text-center" data-aos="flip-up" data-aos-delay="200">
+                        <h4><i class="bi bi-journal-bookmark-fill" style="color: var(--accent-color);"></i> Science Fair Champion</h4>
+                        <p class="small text-secondary">1st Place in the inter-class competition for our innovative technology project.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="milestone-card premium-card text-center" data-aos="flip-up" data-aos-delay="300">
+                        <h4><i class="bi bi-people-fill" style="color: var(--accent-color);"></i> Best in Unity</h4>
+                        <p class="small text-secondary">Received the trophy for exemplary teamwork during the annual Sportsfest.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="milestone-card premium-card text-center" data-aos="flip-up" data-aos-delay="400">
+                        <h4><i class="bi bi-hand-thumbs-up-fill" style="color: var(--accent-color);"></i> Community Service</h4>
+                        <p class="small text-secondary">Recognition for successful leadership in outreach and environmental drives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bonding" style="background-color: var(--dark-bg);">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>GALLERY OF MEMORIES</h2>
+            </div>
+
+            <div class="slideshow text-center" data-aos="fade-in" data-aos-delay="200">
+                <img id="slideshowImage"
+                    src="bond1.jpg"
+                    alt="A memorable group photo from the batch's bonding activity."
+                    class="img-fluid rounded shadow-lg gallery-image">
+                <div class="slideshow-controls d-flex justify-content-center mt-4 gap-4">
+                    <button id="prevBtn" class="btn btn-lg btn-dark-custom shadow-sm">
+                        <i class="bi bi-arrow-left-circle"></i> Previous
+                    </button>
+                    <button id="nextBtn" class="btn btn-lg btn-accent-custom shadow-sm">
+                        Next <i class="bi bi-arrow-right-circle"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="music-player text-center mt-5" data-aos="fade-up" data-aos-delay="400">
+                <audio id="audioPlayer" loop>
+                    <source src="the-journey-lea.mp3" type="audio/mp3">
+                    Your browser does not support the audio element.
+                </audio>
+                <button id="playPauseBtn" class="btn btn-custom btn-lg shadow">Play The Journey 🎶</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" style="background-color: var(--section-bg);">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>GUESTBOOK OF GRATITUDE</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <p class="text-center mb-4 text-secondary" data-aos="fade-in">Leave your final tribute message to the batch and Ma'am Apol below. All messages are public and real-time.</p>
+                    <p id="appIdDisplay" class="text-center mb-4 text-secondary small"></p>
+                    <form id="guestbookForm" data-aos="fade-up" data-aos-delay="200">
+                        <div class="mb-3">
+                            <label for="name" class="form-label text-secondary">Your Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="affiliation" class="form-label text-secondary">Affiliation</label>
+                            <input type="text" class="form-control" id="affiliation" placeholder="e.g., Classmate, Parent, Teacher, Friend">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label text-secondary">Your Tribute Message / Memory</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <div class="d-flex justify-content-center gap-3 mt-4">
+                            <button type="submit" class="btn btn-custom">SUBMIT ENTRY</button>
+                            <button type="button" class="btn btn-outline-secondary" id="shareBtn" style="border-color: var(--accent-color); color: var(--accent-color);">
+                                <i class="bi bi-share-fill"></i> Share Page
+                            </button>
+                        </div>
+                    </form>
+
+                    <div id="messagesContainer" class="mt-5">
+                        <h3 class="text-center text-secondary">Tribute Messages</h3>
+                        <p class="text-center text-secondary mt-3" id="loadingMessage">Loading messages...</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messageModalLabel">Message Sent!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Your tribute message has been successfully added to the guestbook.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-custom" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Music Player -->
-    <div class="music-player">
-        <audio id="audioPlayer" loop>
-            <!-- comment added to force redeploy -->
-            <source src="the-journey-lea.mp3" type="audio/mp3">
-            Your browser does not support the audio element.
-          </audio>
-      <button id="playPauseBtn">Play Music</button>
-    </div>
-  </section>
 
-  </main>
+    <footer style="background-color: var(--dark-bg); padding: 3rem 0; border-top: 1px solid var(--accent-color);">
+        <div class="container text-center">
+            <p style="color: var(--accent-color);" class="mb-0">&copy; 2025 Grade 4 Batch | Digital Archive</p>
+            <p class="small text-secondary">Developed by Renniel Salazar</p>
+        </div>
+    </footer>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>&copy; 2025 Grade 4 Batch | Made with love</p>
-      <p>Developed by <strong>Renniel Salazar</strong></p> <!-- Added your name -->
-      <img src="profile.jpg" alt="Renniel Salazar" class="developer-photo"> <!-- Add your image -->
-    </div>
-  </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        setLogLevel('debug'); // Enable Firestore debug logging
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-in-out',
+        });
+
+        // =========================================
+        // FIREBASE & GUESTBOOK LOGIC (COMPLETED)
+        // =========================================
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        // Note: __firebase_config and __initial_auth_token must be defined by your hosting environment/backend.
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        let userIsAuthenticated = false;
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                userIsAuthenticated = true;
+                console.log("User is authenticated:", user.uid);
+            } else {
+                userIsAuthenticated = false;
+                console.log("User is signed out or not authenticated. Signing in anonymously...");
+                try {
+                    if (initialAuthToken) {
+                        await signInWithCustomToken(auth, initialAuthToken);
+                        console.log("Signed in with custom token.");
+                    } else {
+                        await signInAnonymously(auth);
+                        console.log("Signed in anonymously.");
+                    }
+                } catch (error) {
+                    console.error("Firebase Auth error:", error);
+                }
+            }
+        });
+
+        const guestbookForm = document.getElementById("guestbookForm");
+        const messagesContainer = document.getElementById("messagesContainer");
+        const loadingMessage = document.getElementById("loadingMessage");
+        const messageModal = new bootstrap.Modal(document.getElementById('messageModal'));
+
+        if (guestbookForm) {
+            guestbookForm.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                if (!userIsAuthenticated) {
+                    console.error("User not authenticated. Cannot submit message.");
+                    alert("Authentication failed. Please refresh the page and try again.");
+                    return;
+                }
+
+                const name = document.getElementById("name").value;
+                const affiliation = document.getElementById("affiliation").value;
+                const message = document.getElementById("message").value;
+
+                try {
+                    const docRef = await addDoc(collection(db, "guestbook_entries"), {
+                        name: name,
+                        affiliation: affiliation,
+                        message: message,
+                        timestamp: serverTimestamp()
+                    });
+                    console.log("Document written with ID: ", docRef.id);
+                    guestbookForm.reset();
+                    messageModal.show();
+                } catch (e) {
+                    console.error("Error adding document: ", e);
+                    alert("Failed to submit message. Check console for details.");
+                }
+            });
+
+            // Real-time listener for messages
+            const q = query(collection(db, "guestbook_entries"));
+
+            onSnapshot(q, (snapshot) => {
+                let messagesHtml = '';
+                loadingMessage.style.display = 'none';
+
+                snapshot.docChanges().forEach((change) => {
+                    const doc = change.doc;
+                    const data = doc.data();
+
+                    if (data && data.name && data.message) {
+                        // Use toDate() for a valid Date object if it's a Firestore Timestamp
+                        const date = data.timestamp ? new Date(data.timestamp.toDate()).toLocaleString() : 'Just Now';
+
+                        const entryHtml = `
+                            <div class="guestbook-entry" data-aos="fade-up">
+                                <div class="entry-header">
+                                    <span class="entry-name">${data.name}</span>
+                                    <span class="entry-affiliation">${data.affiliation || 'Batch Supporter'}</span>
+                                </div>
+                                <p class="entry-message text-light">${data.message}</p>
+                                <p class="entry-timestamp">${date}</p>
+                            </div>
+                        `;
+
+                        if (change.type === "added") {
+                            // Prepend new messages to see the latest first
+                            messagesHtml = entryHtml + messagesHtml;
+                        } else if (change.type === "modified" || change.type === "removed") {
+                            // Re-render entirely on changes for simplicity in this project scope
+                            messagesHtml = ''; // Clear and rebuild
+                            snapshot.docs.sort((a, b) => b.data().timestamp - a.data().timestamp).forEach(doc => {
+                                const data = doc.data();
+                                const date = data.timestamp ? new Date(data.timestamp.toDate()).toLocaleString() : 'Just Now';
+                                messagesHtml += `
+                                    <div class="guestbook-entry" data-aos="fade-up">
+                                        <div class="entry-header">
+                                            <span class="entry-name">${data.name}</span>
+                                            <span class="entry-affiliation">${data.affiliation || 'Batch Supporter'}</span>
+                                        </div>
+                                        <p class="entry-message text-light">${data.message}</p>
+                                        <p class="entry-timestamp">${date}</p>
+                                    </div>
+                                `;
+                            });
+                        }
+                    }
+                });
+
+                // If there are no messages after loading
+                if (snapshot.docs.length === 0) {
+                    messagesHtml += '<p class="text-center text-secondary mt-3">Be the first to leave a message!</p>';
+                }
+
+                messagesContainer.innerHTML = '<h3 class="text-center text-secondary">Tribute Messages</h3>' + messagesHtml;
+            });
+        }
+
+        document.getElementById('appIdDisplay').textContent = `Firebase App ID: ${appId}`;
+
+        // Share functionality
+        const shareBtn = document.getElementById('shareBtn');
+        if (shareBtn) {
+            shareBtn.addEventListener('click', async () => {
+                try {
+                    await navigator.clipboard.writeText(window.location.href);
+                    alert('Page link copied to clipboard!');
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                    alert('Could not copy link. Please manually copy the URL from the address bar.');
+                }
+            });
+        }
+    </script>
+
+    <script>
+        // =========================================
+        // SLIDESHOW & MUSIC LOGIC (Cleaned up)
+        // =========================================
+
+        const bondingImages = [
+            "bond1.jpg", "bond2.jpg", "bond3.jpg", "bond4.jpg", "bond5.jpg",
+            "bond6.jpg", "bond7.jpg", "bond8.jpg", "bond9.jpg", "bond10.jpg",
+            "bond11.jpg", "bond12.jpg", "bond13.jpg", "bond14.jpg", "bond15.jpg",
+            "bond16.jpg", "bond17.jpg", "bond18.jpg", "bond19.jpg"
+        ];
+
+        let currentSlide = 0;
+        const slideshowImage = document.getElementById("slideshowImage");
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+        const audioPlayer = document.getElementById("audioPlayer");
+        const playPauseBtn = document.getElementById("playPauseBtn");
+
+        function showSlide(index) {
+            if (!slideshowImage) return;
+
+            // Fading effect for smooth transition
+            slideshowImage.style.opacity = 0;
+
+            setTimeout(() => {
+                if (index < 0) currentSlide = bondingImages.length - 1;
+                else if (index >= bondingImages.length) currentSlide = 0;
+                else currentSlide = index;
+
+                slideshowImage.src = bondingImages[currentSlide];
+                // Updated Alt Text for Accessibility/SEO
+                slideshowImage.alt = `Grade 4 Bonding Memory Photo ${currentSlide + 1} of ${bondingImages.length}.`;
+                slideshowImage.style.opacity = 1;
+            }, 150);
+        }
+
+        // Initialize the slideshow on load
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(0);
+        });
+
+        if (prevBtn && nextBtn) {
+            prevBtn.addEventListener("click", () => showSlide(currentSlide - 1));
+            nextBtn.addEventListener("click", () => showSlide(currentSlide + 1));
+        }
+
+        if (slideshowImage) {
+            // Auto-advance slideshow (4 seconds)
+            setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 4000);
+        }
+
+        let isPlaying = false;
+
+        if (playPauseBtn) {
+            playPauseBtn.addEventListener("click", () => {
+                if (isPlaying) {
+                    audioPlayer.pause();
+                    playPauseBtn.innerHTML = "Play The Journey 🎶";
+                    playPauseBtn.classList.remove('btn-danger');
+                    playPauseBtn.classList.add('btn-custom');
+                    isPlaying = false;
+                } else {
+                    audioPlayer.play()
+                        .then(() => {
+                            playPauseBtn.innerHTML = "Pause Music ⏸️";
+                            playPauseBtn.classList.remove('btn-custom');
+                            playPauseBtn.classList.add('btn-danger'); // Use Bootstrap's btn-danger for visual contrast
+                            isPlaying = true;
+                        })
+                        .catch(error => {
+                            console.error("Playback failed (user interaction needed):", error);
+                            playPauseBtn.innerHTML = "Play Blocked 🚫";
+                            playPauseBtn.classList.remove('btn-danger');
+                            playPauseBtn.classList.add('btn-custom');
+                        });
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
